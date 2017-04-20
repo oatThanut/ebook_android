@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 public class JsonData extends AsyncTask<Void, Void, ArrayList<Book>> {
 
+    private ArrayList<Book> books = new ArrayList<>();
+
     @Override
     protected ArrayList<Book> doInBackground(Void... params) {
         StringBuilder listJsonStr = loadBookJson();
@@ -28,10 +30,10 @@ public class JsonData extends AsyncTask<Void, Void, ArrayList<Book>> {
 
             for (int i = 0; i < trendArr.length(); i++) {
                 JSONObject bookJson = trendArr.getJSONObject(i);
-                Book book = new Book(bookJson.getDouble("price"),
-                                     bookJson.getString("url"),
+                Book book = new Book(bookJson.getDouble("prize"),
+                                     bookJson.getString("img_url"),
                                      bookJson.getInt("id"),
-                                     bookJson.getString("name"));
+                                     bookJson.getString("title"));
                 results.add(book);
             }
         }catch (JSONException e) {
@@ -56,5 +58,14 @@ public class JsonData extends AsyncTask<Void, Void, ArrayList<Book>> {
         } catch (IOException e) {
             return null;
         }
+    }
+
+    @Override
+    protected void onPostExecute(ArrayList<Book> results) {
+        books = results;
+    }
+
+    public ArrayList<Book> getBooks() {
+        return books;
     }
 }

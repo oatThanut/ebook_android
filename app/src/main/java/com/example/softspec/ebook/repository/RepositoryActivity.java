@@ -33,15 +33,9 @@ public class RepositoryActivity extends AppCompatActivity implements RepositoryV
     }
 
     private void runTask() {
-        new JsonData(){
-
-            @Override
-            protected void onPostExecute(ArrayList<Book> results) {
-                list.clear();
-                list.addAll(results);
-            }
-
-        }.execute();
+        JsonData jsonData = new JsonData();
+        jsonData.execute();
+        list = jsonData.getBooks();
     }
 
 
