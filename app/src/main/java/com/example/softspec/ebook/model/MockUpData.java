@@ -7,51 +7,59 @@ import java.util.ArrayList;
  */
 
 public class MockUpData {
-    private ArrayList<Book> list;
-    private MockUpData instance;
+    private ArrayList<Book> bookList;
+    private static MockUpData instance;
 
-    public MockUpData() {
-        if (instance == null) {
-            instance = new MockUpData();
-        }
-        list = new ArrayList<Book>();
+    private MockUpData() {
+        bookList = new ArrayList<Book>();
         loadBook();
     }
 
+    public static MockUpData getInstance() {
+        if (instance == null) {
+            instance = new MockUpData();
+        }
+        return instance;
+    }
+
     private void loadBook() {
-        list.add( new Book(
+        bookList.add( new Book(
                 24.95,
                 "https://imagery.pragprog.com/products/471/lhelph_largebeta.jpg",
                 471,
                 "Functional Web Development with Elixir, OTP, and Phoenix"
         ));
 
-        list.add( new Book(
+        bookList.add( new Book(
                 24.95,
                 "https://imagery.pragprog.com/products/504/jwdsal_largebeta.jpg",
                 504,
                 "A Common-Sense Guide to Data Structures and Algorithms"
         ));
 
-        list.add( new Book(
+        bookList.add( new Book(
                 24.95,
                 "https://imagery.pragprog.com/products/508/dcbang2_largebeta.jpg",
                 508,
                 "Rails, Angular, Postgres, and Bootstrap, Second Edition"
         ));
 
-        list.add( new Book(
+        bookList.add( new Book(
                 19.0,
                 "https://imagery.pragprog.com/products/444/rspec3_largebeta.jpg",
                 444,
                 "Effective Testing with RSpec 3"
         ));
 
-        list.add( new Book(
+        bookList.add( new Book(
                 26.95,
                 "https://imagery.pragprog.com/products/486/mkdsa_largebeta.jpg",
                 486,
                 "Design It!"
         ));
+    }
+
+    public ArrayList<Book> getList() {
+        return bookList;
     }
 }

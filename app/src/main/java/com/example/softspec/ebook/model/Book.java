@@ -49,4 +49,8 @@ public class Book {
     public void setImg_url(String img_url) {
         this.img_url = img_url;
     }
+
+    public String toString() {
+        return name;
+    }
 }

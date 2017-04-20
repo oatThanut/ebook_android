@@ -7,6 +7,7 @@ import android.widget.ListView;
 
 import com.example.softspec.ebook.R;
 import com.example.softspec.ebook.model.Book;
+import com.example.softspec.ebook.model.MockUpData;
 
 import java.util.ArrayList;
 
@@ -25,9 +26,11 @@ public class RepositoryActivity extends AppCompatActivity implements RepositoryV
 
 
     public void  setUpListView () {
+        MockUpData m = MockUpData.getInstance();
         ListView listView = (ListView) findViewById(R.id.listView);
         bookAdapter = new ArrayAdapter<Book>(this,
-                android.R.layout.simple_list_item_1, list);
+                android.R.layout.simple_list_item_1, m.getList());
         listView.setAdapter(bookAdapter);
+
     }
 }
