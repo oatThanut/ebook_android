@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Created by oatThanut on 4/20/2017 AD.
+ *  This class is mockup of retrieve data
  */
 
 public class MockUpData {

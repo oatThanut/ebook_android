@@ -3,6 +3,7 @@ package com.example.softspec.ebook.model;
 
 /**
  * Created by oatThanut on 4/20/2017 AD.
+ *  This is the model of Book
  */
 
 public class Book {
