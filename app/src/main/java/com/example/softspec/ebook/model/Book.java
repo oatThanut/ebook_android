@@ -13,7 +13,7 @@ public class Book {
     private String img_url;
 
     public Book(double price, String url, int id, String title) {
-        name = title;
+        this.name = title;
         this.price = price;
         this.id = id;
         this.img_url = url;
