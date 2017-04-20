@@ -8,7 +8,6 @@ import android.widget.ListView;
 import com.example.softspec.ebook.R;
 import com.example.softspec.ebook.model.Book;
 import com.example.softspec.ebook.model.JsonData;
-import com.example.softspec.ebook.model.MockUpData;
 
 import java.util.ArrayList;
 
@@ -23,24 +22,18 @@ public class RepositoryActivity extends AppCompatActivity implements RepositoryV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        setUpListView();
         list = new ArrayList<>();
-        runTask();
+        setUpListView();
         ListView listView = (ListView) findViewById(R.id.listView);
         bookAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, list);
         listView.setAdapter(bookAdapter);
     }
 
-    private void runTask() {
+    public void setUpListView () {
         JsonData jsonData = new JsonData();
         jsonData.execute();
         list = jsonData.getBooks();
-    }
-
-
-    public void setUpListView () {
-//        MockUpData m = MockUpData.getInstance();
-
+        System.out.println(list.toString());
     }
 }
