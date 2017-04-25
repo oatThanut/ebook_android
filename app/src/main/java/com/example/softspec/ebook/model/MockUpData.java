@@ -7,13 +7,12 @@ import java.util.ArrayList;
  *  This class is mockup of retrieve data
  */
 
-public class MockUpData {
+public class MockUpData extends Strategy {
     private ArrayList<Book> bookList;
     private static MockUpData instance;
 
     private MockUpData() {
         bookList = new ArrayList<Book>();
-        loadBook();
     }
 
     public static MockUpData getInstance() {
@@ -23,7 +22,13 @@ public class MockUpData {
         return instance;
     }
 
-    private void loadBook() {
+    @Override
+    public void execute() {
+        loadBook();
+    }
+
+    @Override
+    protected void loadBook() {
         bookList.add( new Book(
                 24.95,
                 "https://imagery.pragprog.com/products/471/lhelph_largebeta.jpg",
@@ -60,7 +65,9 @@ public class MockUpData {
         ));
     }
 
+    @Override
     public ArrayList<Book> getList() {
         return bookList;
     }
+
 }
