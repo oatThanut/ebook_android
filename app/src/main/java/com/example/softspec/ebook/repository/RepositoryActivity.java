@@ -34,6 +34,5 @@ public class RepositoryActivity extends AppCompatActivity implements RepositoryV
         JsonData jsonData = new JsonData();
         jsonData.execute();
         list = jsonData.getBooks();
-        System.out.println(list.toString());
     }
 }

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class JsonData extends AsyncTask<Void, Void, ArrayList<Book>> {
 
     private ArrayList<Book> books = new ArrayList<>();
-
+    
     @Override
     protected ArrayList<Book> doInBackground(Void... params) {
         StringBuilder listJsonStr = loadBookJson();
@@ -54,6 +54,8 @@ public class JsonData extends AsyncTask<Void, Void, ArrayList<Book>> {
             while ((inputLine = in.readLine()) != null) {
                 result.append(inputLine);
             }
+            System.out.println(result);
+
             return result;
         } catch (IOException e) {
             return null;
