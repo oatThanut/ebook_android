@@ -12,7 +12,7 @@ public class MockUpData extends Strategy {
     private static MockUpData instance;
 
     private MockUpData() {
-        bookList = new ArrayList<Book>();
+        bookList = new ArrayList<>();
     }
 
     public static MockUpData getInstance() {

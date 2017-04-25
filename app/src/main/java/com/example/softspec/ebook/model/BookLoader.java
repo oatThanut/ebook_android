@@ -9,9 +9,12 @@ import java.util.ArrayList;
 
 public class BookLoader extends Strategy {
     private static BookLoader instance;
+    private JsonData jsonData;
+    private ArrayList<Book> bookArrayList;
 
     private BookLoader() {
-
+        jsonData = new JsonData();
+        bookArrayList = new ArrayList<>();
     }
 
     public static BookLoader getInstance() {
@@ -29,10 +32,12 @@ public class BookLoader extends Strategy {
     @Override
     protected void loadBook(){
         // TODO: retrieve data from https://theory.cpe.ku.ac.th/~jittat/courses/sw-spec/ebooks/books.json
+        jsonData.execute();
+        bookArrayList = jsonData.getBooks();
     }
 
     @Override
     public ArrayList<Book> getList() {
-        return null;
+        return bookArrayList;
     }
 }
