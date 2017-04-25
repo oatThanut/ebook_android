@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class JsonData extends AsyncTask<Void, Void, ArrayList<Book>> {
 
     private ArrayList<Book> books = new ArrayList<>();
-    
+
     @Override
     protected ArrayList<Book> doInBackground(Void... params) {
         StringBuilder listJsonStr = loadBookJson();
