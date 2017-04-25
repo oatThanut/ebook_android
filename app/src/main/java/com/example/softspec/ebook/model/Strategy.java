@@ -6,9 +6,8 @@ import java.util.ArrayList;
  * Created by oatThanut on 4/24/2017 AD.
  */
 
-public abstract class Strategy {
-    public void execute(){}
-    protected void loadBook(){}
-    public ArrayList<Book> getList(){ return new ArrayList<>();}
-
+public interface Strategy {
+    public void execute();
+    public void loadBook();
+    public ArrayList<Book> getList();
 }

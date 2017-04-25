@@ -9,7 +9,10 @@ import com.example.softspec.ebook.R;
 import com.example.softspec.ebook.model.Book;
 import com.example.softspec.ebook.model.BookRepositoryManager;
 
-public class RepositoryActivity extends AppCompatActivity implements RepositoryView {
+import java.util.Observable;
+import java.util.Observer;
+
+public class RepositoryActivity extends AppCompatActivity implements RepositoryView, Observer {
 
     private ArrayAdapter<Book> bookAdapter;
 
@@ -31,5 +34,10 @@ public class RepositoryActivity extends AppCompatActivity implements RepositoryV
                 android.R.layout.simple_list_item_1, loader.getPlan().getList());
         listView.setAdapter(bookAdapter);
 
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        setUpListView();
     }
 }

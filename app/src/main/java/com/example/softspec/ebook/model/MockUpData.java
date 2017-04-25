@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *  This class is mockup of retrieve data
  */
 
-public class MockUpData extends Strategy {
+public class MockUpData implements Strategy {
     private ArrayList<Book> bookList;
     private static MockUpData instance;
 
@@ -28,7 +28,7 @@ public class MockUpData extends Strategy {
     }
 
     @Override
-    protected void loadBook() {
+    public void loadBook() {
         bookList.add( new Book(
                 24.95,
                 "https://imagery.pragprog.com/products/471/lhelph_largebeta.jpg",
