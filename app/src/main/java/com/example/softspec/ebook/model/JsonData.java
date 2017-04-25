@@ -26,7 +26,7 @@ public class JsonData extends AsyncTask<Void, Void, ArrayList<Book>> {
         ArrayList<Book> results = new ArrayList<>();
         try {
             JSONObject jsonObj = new JSONObject(listJsonStr.toString());
-            JSONArray trendArr = jsonObj.getJSONArray("");
+            JSONArray trendArr = jsonObj.getJSONArray("ebook");
 
             for (int i = 0; i < trendArr.length(); i++) {
                 JSONObject bookJson = trendArr.getJSONObject(i);
