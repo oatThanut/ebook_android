@@ -19,9 +19,9 @@ public class BookRepositoryManager {
 
     public static BookRepositoryManager getInstance() {
         if (instance == null) {
-            instance = new BookRepositoryManager(MockUpData.getInstance());
+//             instance = new BookRepositoryManager(MockUpData.getInstance());
             // Uncomment below for retrieve data from JSON
-            //instance = new BookRepositoryManager(BookLoader.getInstance());
+            instance = new BookRepositoryManager(BookLoader.getInstance());
         }
         return instance;
     }

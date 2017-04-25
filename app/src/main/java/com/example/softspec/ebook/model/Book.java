@@ -8,13 +8,13 @@ package com.example.softspec.ebook.model;
 
 public class Book {
     private String name;
-    private double price;
+    private double prize;
     private int id;
     private String img_url;
 
-    public Book(double price, String url, int id, String title) {
+    public Book(double prize, String url, int id, String title) {
         this.name = title;
-        this.price = price;
+        this.prize = prize;
         this.id = id;
         this.img_url = url;
     }
@@ -27,12 +27,12 @@ public class Book {
         this.name = name;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPrize() {
+        return prize;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrize(double prize) {
+        this.prize = prize;
     }
 
     public int getId() {
