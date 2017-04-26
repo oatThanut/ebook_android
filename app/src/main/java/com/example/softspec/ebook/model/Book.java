@@ -52,6 +52,6 @@ public class Book {
     }
 
     public String toString() {
-        return name;
+        return String.format("%s\n\n%.2f",name, price);
     }
 }
