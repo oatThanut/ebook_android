@@ -69,7 +69,7 @@ public class BookLoader extends Observable implements Strategy {
 
                 for (int i = 0; i < bookArr.length(); i++) {
                     JSONObject bookJson = bookArr.getJSONObject(i);
-                    Book book = new Book(bookJson.getDouble("prize"),
+                    Book book = new Book(bookJson.getDouble("price"),
                             bookJson.getString("img_url"),
                             bookJson.getInt("id"),
                             bookJson.getString("title"));
