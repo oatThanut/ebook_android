@@ -6,6 +6,7 @@ package com.example.softspec.ebook.repository;
  */
 
 public class Presenter {
+    public Activity activity = new Activity();
 
 
 }

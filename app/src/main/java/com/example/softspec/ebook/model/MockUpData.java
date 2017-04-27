@@ -33,35 +33,40 @@ public class MockUpData implements Strategy {
                 24.95,
                 "https://imagery.pragprog.com/products/471/lhelph_largebeta.jpg",
                 471,
-                "Functional Web Development with Elixir, OTP, and Phoenix"
+                "Functional Web Development with Elixir, OTP, and Phoenix",
+                "1"
         ));
 
         bookList.add( new Book(
                 24.95,
                 "https://imagery.pragprog.com/products/504/jwdsal_largebeta.jpg",
                 504,
-                "A Common-Sense Guide to Data Structures and Algorithms"
+                "A Common-Sense Guide to Data Structures and Algorithms",
+                "1"
         ));
 
         bookList.add( new Book(
                 24.95,
                 "https://imagery.pragprog.com/products/508/dcbang2_largebeta.jpg",
                 508,
-                "Rails, Angular, Postgres, and Bootstrap, Second Edition"
+                "Rails, Angular, Postgres, and Bootstrap, Second Edition",
+                "1"
         ));
 
         bookList.add( new Book(
                 19.0,
                 "https://imagery.pragprog.com/products/444/rspec3_largebeta.jpg",
                 444,
-                "Effective Testing with RSpec 3"
+                "Effective Testing with RSpec 3",
+                "1"
         ));
 
         bookList.add( new Book(
                 26.95,
                 "https://imagery.pragprog.com/products/486/mkdsa_largebeta.jpg",
                 486,
-                "Design It!"
+                "Design It!",
+                "1"
         ));
     }
 
