@@ -3,6 +3,12 @@ package com.example.softspec.ebook.repository;
 import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+
 import android.support.v7.widget.SearchView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,6 +37,9 @@ public class Activity extends AppCompatActivity implements View, Observer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
         bs = new ArrayList<>();
         check = true;
         text = (SearchView) findViewById(R.id.search);
@@ -55,6 +64,30 @@ public class Activity extends AppCompatActivity implements View, Observer {
         setUpListView();
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.my_action_bar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                //TODO: call hide/show searchView
+                return true;
+
+            case R.id.action_sort:
+                //TODO: call sort function here
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
 
     public void setUpListView() {
         loader = BookRepositoryManager.getInstance();
