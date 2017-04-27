@@ -72,7 +72,8 @@ public class BookLoader extends Observable implements Strategy {
                     Book book = new Book(bookJson.getDouble("price"),
                             bookJson.getString("img_url"),
                             bookJson.getInt("id"),
-                            bookJson.getString("title"));
+                            bookJson.getString("title"),
+                            bookJson.getString("pub_year"));
                     results.add(book);
                 }
 
@@ -112,7 +113,4 @@ public class BookLoader extends Observable implements Strategy {
         }
     }
 
-    public Book search() {
-        return null;
-    }
 }

@@ -11,12 +11,13 @@ public class Book {
     private double price;
     private int id;
     private String img_url;
-
-    public Book(double price, String url, int id, String title) {
+    private String year;
+    public Book(double price, String url, int id, String title, String year) {
         this.name = title;
         this.price = price;
         this.id = id;
         this.img_url = url;
+        this.year = year;
     }
 
     public String getName() {
@@ -51,7 +52,10 @@ public class Book {
         this.img_url = img_url;
     }
 
+    public String getYear() {
+        return year;
+    }
     public String toString() {
-        return String.format("%s\n\n%.2f",name, price);
+        return String.format("%s\n%.2f\n%s",name, price, year);
     }
 }
