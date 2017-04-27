@@ -2,8 +2,10 @@ package com.example.softspec.ebook.repository;
 
 /**
  * Created by oatThanut on 4/20/2017 AD.
- *  Presenter of Repository
+ *  Presenter of Presenter
  */
 
-public class Repository {
+public class Presenter {
+
+
 }

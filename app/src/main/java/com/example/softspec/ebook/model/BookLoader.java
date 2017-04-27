@@ -111,4 +111,8 @@ public class BookLoader extends Observable implements Strategy {
             notifyObservers();
         }
     }
+
+    public Book search() {
+        return null;
+    }
 }

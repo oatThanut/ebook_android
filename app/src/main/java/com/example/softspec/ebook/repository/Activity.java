@@ -12,7 +12,7 @@ import com.example.softspec.ebook.model.BookRepositoryManager;
 import java.util.Observable;
 import java.util.Observer;
 
-public class RepositoryActivity extends AppCompatActivity implements RepositoryView, Observer {
+public class Activity extends AppCompatActivity implements View, Observer {
 
     private ArrayAdapter<Book> bookAdapter;
 
