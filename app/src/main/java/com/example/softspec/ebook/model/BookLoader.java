@@ -112,5 +112,4 @@ public class BookLoader extends Observable implements Strategy {
             notifyObservers();
         }
     }
-
 }

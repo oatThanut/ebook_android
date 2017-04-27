@@ -32,6 +32,8 @@ public class Activity extends AppCompatActivity implements View, Observer {
     private ListView listView;
     private SearchView text;
     private boolean check;
+    private Button button1 ;
+    private Button button2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,9 @@ public class Activity extends AppCompatActivity implements View, Observer {
         check = true;
         text = (SearchView) findViewById(R.id.search);
         text.setMaxWidth(Integer.MAX_VALUE);
+        button1 = (Button) findViewById(R.id.year);
+        button2 = (Button) findViewById(R.id.name);
+        button2.setEnabled(false);
         text.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -131,18 +136,14 @@ public class Activity extends AppCompatActivity implements View, Observer {
     }
 
     public void ChooseYear(android.view.View view) {
-        Button button1 = (Button) findViewById(R.id.year);
-        Button button2 = (Button) findViewById(R.id.name);
         button1.setEnabled(false);
         button2.setEnabled(true);
         check = false;
     }
 
     public void ChooseName(android.view.View view) {
-        Button button2 = (Button) findViewById(R.id.year);
-        Button button1 = (Button) findViewById(R.id.name);
-        button1.setEnabled(false);
-        button2.setEnabled(true);
+        button1.setEnabled(true);
+        button2.setEnabled(false);
         check = true;
     }
 }
