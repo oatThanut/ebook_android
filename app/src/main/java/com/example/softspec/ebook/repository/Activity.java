@@ -1,6 +1,5 @@
 package com.example.softspec.ebook.repository;
 
-import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -29,12 +28,12 @@ public class Activity extends AppCompatActivity implements View, Observer {
 
     private ArrayAdapter<Book> bookAdapter;
     private BookRepositoryManager loader;
-    private ArrayList<Book> bs;
+    private ArrayList<Book> searchBookList;
     private ListView listView;
     private SearchView text;
-    private boolean check;
-    private Button button1 ;
-    private Button button2;
+    private boolean isSearchByName;
+    private Button searchByYearButton;
+    private Button searchByNameButton;
     private LinearLayout searchB;
     private Boolean isSearchAppear;
 
@@ -50,13 +49,13 @@ public class Activity extends AppCompatActivity implements View, Observer {
         searchB.setVisibility(LinearLayout.GONE);
         isSearchAppear = false;
 
-        bs = new ArrayList<>();
-        check = true;
+        searchBookList = new ArrayList<>();
+        isSearchByName = true;
         text = (SearchView) findViewById(R.id.search);
         text.setMaxWidth(Integer.MAX_VALUE);
-        button1 = (Button) findViewById(R.id.year);
-        button2 = (Button) findViewById(R.id.name);
-        button2.setEnabled(false);
+        searchByYearButton = (Button) findViewById(R.id.year);
+        searchByNameButton = (Button) findViewById(R.id.name);
+        searchByNameButton.setEnabled(false);
         text.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -65,7 +64,7 @@ public class Activity extends AppCompatActivity implements View, Observer {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if (check) {
+                if (isSearchByName) {
                     searchByName();
                 } else {
                     searchByYear();
@@ -124,23 +123,23 @@ public class Activity extends AppCompatActivity implements View, Observer {
     }
 
     public void searchByYear() {
-        bs.clear();
+        searchBookList.clear();
         for (Book b : loader.getPlan().getList()) {
             if (b.getYear().contains(text.getQuery().toString())) {
-                bs.add(b);
+                searchBookList.add(b);
             }
         }
-        updateListView(bs);
+        updateListView(searchBookList);
     }
 
     public void searchByName() {
-        bs.clear();
+        searchBookList.clear();
         for (Book b : loader.getPlan().getList()) {
             if (b.getName().contains(text.getQuery().toString())) {
-                bs.add(b);
+                searchBookList.add(b);
             }
         }
-        updateListView(bs);
+        updateListView(searchBookList);
     }
 
     public void updateListView(ArrayList<Book> books) {
@@ -150,14 +149,14 @@ public class Activity extends AppCompatActivity implements View, Observer {
     }
 
     public void ChooseYear(android.view.View view) {
-        button1.setEnabled(false);
-        button2.setEnabled(true);
-        check = false;
+        searchByYearButton.setEnabled(false);
+        searchByNameButton.setEnabled(true);
+        isSearchByName = false;
     }
 
     public void ChooseName(android.view.View view) {
-        button1.setEnabled(true);
-        button2.setEnabled(false);
-        check = true;
+        searchByYearButton.setEnabled(true);
+        searchByNameButton.setEnabled(false);
+        isSearchByName = true;
     }
 }
