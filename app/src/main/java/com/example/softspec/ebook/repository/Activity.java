@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.support.v7.widget.SearchView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.softspec.ebook.R;
@@ -34,6 +35,9 @@ public class Activity extends AppCompatActivity implements View, Observer {
     private boolean check;
     private Button button1 ;
     private Button button2;
+    private LinearLayout searchB;
+    private Boolean isSearchAppear;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,10 @@ public class Activity extends AppCompatActivity implements View, Observer {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
+        searchB = (LinearLayout)findViewById(R.id.search_container);
+        searchB.setVisibility(LinearLayout.GONE);
+        isSearchAppear = false;
 
         bs = new ArrayList<>();
         check = true;
@@ -79,7 +87,13 @@ public class Activity extends AppCompatActivity implements View, Observer {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_search:
-                //TODO: call hide/show searchView
+                if(this.isSearchAppear) {
+                    searchB.setVisibility(LinearLayout.GONE);
+                    this.isSearchAppear = false;
+                } else {
+                    this.searchB.setVisibility(LinearLayout.VISIBLE);
+                    this.isSearchAppear = true;
+                }
                 return true;
 
             case R.id.action_sort:
