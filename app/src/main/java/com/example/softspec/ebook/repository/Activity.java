@@ -28,7 +28,6 @@ public class Activity extends AppCompatActivity implements View, Observer {
 
     private ArrayAdapter<Book> bookAdapter;
     private BookRepositoryManager loader;
-    private ArrayList<Book> searchBookList;
     private ListView listView;
     private SearchView text;
     private boolean isSearchByName;
@@ -49,7 +48,6 @@ public class Activity extends AppCompatActivity implements View, Observer {
         searchB.setVisibility(LinearLayout.GONE);
         isSearchAppear = false;
 
-        searchBookList = new ArrayList<>();
         isSearchByName = true;
         text = (SearchView) findViewById(R.id.search);
         text.setMaxWidth(Integer.MAX_VALUE);
@@ -65,9 +63,10 @@ public class Activity extends AppCompatActivity implements View, Observer {
             @Override
             public boolean onQueryTextChange(String newText) {
                 if (isSearchByName) {
-                    searchByName();
+                    updateListView(loader.searchByName(text));
+
                 } else {
-                    searchByYear();
+                    updateListView(loader.searchByYear(text));
                 }
 
                 return false;
@@ -122,25 +121,6 @@ public class Activity extends AppCompatActivity implements View, Observer {
         setUpListView();
     }
 
-    public void searchByYear() {
-        searchBookList.clear();
-        for (Book b : loader.getPlan().getList()) {
-            if (b.getYear().contains(text.getQuery().toString())) {
-                searchBookList.add(b);
-            }
-        }
-        updateListView(searchBookList);
-    }
-
-    public void searchByName() {
-        searchBookList.clear();
-        for (Book b : loader.getPlan().getList()) {
-            if (b.getName().contains(text.getQuery().toString())) {
-                searchBookList.add(b);
-            }
-        }
-        updateListView(searchBookList);
-    }
 
     public void updateListView(ArrayList<Book> books) {
         bookAdapter = new ArrayAdapter<>(this,
@@ -159,4 +139,5 @@ public class Activity extends AppCompatActivity implements View, Observer {
         searchByNameButton.setEnabled(false);
         isSearchByName = true;
     }
+
 }

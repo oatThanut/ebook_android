@@ -1,5 +1,8 @@
 package com.example.softspec.ebook.model;
 
+import android.support.v7.widget.SearchView;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 /**
@@ -8,12 +11,12 @@ import java.util.ArrayList;
  */
 
 public class BookRepositoryManager {
-    private ArrayList<Book> bookList;
+    private ArrayList<Book> searchBookList;
     private static BookRepositoryManager instance;
     private Strategy plan;
 
     private BookRepositoryManager(Strategy str) {
-        bookList = new ArrayList<Book>();
+        searchBookList = new ArrayList<>();
         setStrategy(str);
     }
 
@@ -37,4 +40,26 @@ public class BookRepositoryManager {
     public Strategy getPlan() {
         return this.plan;
     }
+
+    public ArrayList<Book> searchByYear(SearchView text) {
+        searchBookList.clear();
+        for (Book b : plan.getList()) {
+            if (b.getYear().contains(text.getQuery().toString())) {
+                searchBookList.add(b);
+            }
+        }
+        return searchBookList;
+    }
+
+    public ArrayList<Book> searchByName(SearchView text) {
+        searchBookList.clear();
+        for (Book b : plan.getList()) {
+            if (b.getName().contains(text.getQuery().toString())) {
+                searchBookList.add(b);
+            }
+        }
+        return searchBookList;
+    }
+
+
 }
