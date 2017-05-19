@@ -51,6 +51,10 @@ public class BookLoader extends Observable implements Strategy {
         return bookArrayList;
     }
 
+    public ArrayList<Book> cloneList() {
+        return (ArrayList<Book>) bookArrayList.clone();
+    }
+
 
     private class JsonData extends AsyncTask<Void, Void, ArrayList<Book>> {
 

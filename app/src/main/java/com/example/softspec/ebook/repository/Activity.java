@@ -64,7 +64,6 @@ public class Activity extends AppCompatActivity implements View, Observer {
             public boolean onQueryTextChange(String newText) {
                 if (isSearchByName) {
                     updateListView(loader.searchByName(text));
-
                 } else {
                     updateListView(loader.searchByYear(text));
                 }
@@ -96,6 +95,7 @@ public class Activity extends AppCompatActivity implements View, Observer {
 
             case R.id.action_sort:
                 //TODO: call sort function here
+                updateListView(loader.sortName());
                 return true;
 
             default:

@@ -4,6 +4,8 @@ import android.support.v7.widget.SearchView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by oatThanut on 4/20/2017 AD.
@@ -35,6 +37,7 @@ public class BookRepositoryManager {
 
     public void loadBook() {
         plan.execute();
+        searchBookList = plan.cloneList();
     }
 
     public Strategy getPlan() {
@@ -54,12 +57,20 @@ public class BookRepositoryManager {
     public ArrayList<Book> searchByName(SearchView text) {
         searchBookList.clear();
         for (Book b : plan.getList()) {
-            if (b.getName().contains(text.getQuery().toString())) {
+            if (b.getName().toLowerCase().contains(text.getQuery().toString().toLowerCase())) {
                 searchBookList.add(b);
             }
         }
         return searchBookList;
     }
 
-
+    public ArrayList<Book> sortName() {
+        Collections.sort(searchBookList, new Comparator<Book>() {
+            @Override
+            public int compare(Book o1, Book o2) {
+                return o1.getName().toLowerCase().compareTo(o2.getName().toLowerCase());
+            }
+        });
+        return searchBookList;
+    }
 }

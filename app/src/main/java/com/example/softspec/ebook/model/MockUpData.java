@@ -75,4 +75,9 @@ public class MockUpData implements Strategy {
         return bookList;
     }
 
+    @Override
+    public ArrayList<Book> cloneList() {
+        return null;
+    }
+
 }
