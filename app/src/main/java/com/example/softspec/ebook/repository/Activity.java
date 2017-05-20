@@ -51,9 +51,11 @@ public class Activity extends AppCompatActivity implements View, Observer {
         setSupportActionBar(myToolbar);
 
         user = new User("Oat", 100);
+        loader = BookRepositoryManager.getInstance();
+        loader.addObserver(this);
+        loader.loadBook();
 
         searchB = (LinearLayout)findViewById(R.id.search_container);
-        searchB.setVisibility(LinearLayout.GONE);
         isSearchAppear = false;
 
         isSearchByName = true;
@@ -79,7 +81,6 @@ public class Activity extends AppCompatActivity implements View, Observer {
                 return false;
             }
         });
-        setUpListView();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -102,7 +103,6 @@ public class Activity extends AppCompatActivity implements View, Observer {
                 return true;
 
             case R.id.action_sort:
-                //TODO: call sort function here
                 updateListView(loader.sortName());
                 return true;
 
@@ -120,8 +120,6 @@ public class Activity extends AppCompatActivity implements View, Observer {
     }
 
     public void setUpListView() {
-        loader = BookRepositoryManager.getInstance();
-        loader.loadBook();
         listView = (ListView) findViewById(R.id.listView);
         bookAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, loader.getPlan().getList());
@@ -140,7 +138,7 @@ public class Activity extends AppCompatActivity implements View, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-
+        setUpListView();
     }
 
 

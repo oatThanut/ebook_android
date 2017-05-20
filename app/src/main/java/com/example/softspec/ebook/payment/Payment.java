@@ -35,6 +35,7 @@ public class Payment extends AppCompatActivity implements PaymentView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
+
         user = getIntent().getParcelableExtra("user");
 //        book = getIntent().getParcelableExtra("book");
         initial();

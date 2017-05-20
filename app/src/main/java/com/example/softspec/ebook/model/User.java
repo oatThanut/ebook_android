@@ -17,6 +17,7 @@ public class User implements Parcelable {
     public User(String name, int fund) {
         this.name = name;
         this.fund = fund;
+        this.ownBooks = new ArrayList<>();
     }
 
     protected User(Parcel in) {

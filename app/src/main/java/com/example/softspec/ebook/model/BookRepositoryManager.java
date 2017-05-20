@@ -6,6 +6,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Observer;
 
 /**
  * Created by oatThanut on 4/20/2017 AD.
@@ -38,6 +39,10 @@ public class BookRepositoryManager {
     public void loadBook() {
         plan.execute();
         searchBookList = plan.cloneList();
+    }
+
+    public void addObserver(Observer observer) {
+        BookLoader.getInstance().addObserver(observer);
     }
 
     public Strategy getPlan() {
