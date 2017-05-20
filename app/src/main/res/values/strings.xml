@@ -2,4 +2,5 @@
     <string name="app_name">Ebook</string>
     <string name="action_search">action_search</string>
     <string name="action_sort">action_sort</string>
+    <string name="action_user">action_user</string>
 </resources>

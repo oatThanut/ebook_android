@@ -65,12 +65,12 @@ public class BookRepositoryManager {
     }
 
     public ArrayList<Book> sortName() {
-        Collections.sort(searchBookList, new Comparator<Book>() {
-            @Override
-            public int compare(Book o1, Book o2) {
-                return o1.getName().toLowerCase().compareTo(o2.getName().toLowerCase());
-            }
-        });
-        return searchBookList;
+            Collections.sort(searchBookList, new Comparator<Book>() {
+                @Override
+                public int compare(Book o1, Book o2) {
+                    return o1.getName().toLowerCase().compareTo(o2.getName().toLowerCase());
+                }
+            });
+            return searchBookList;
     }
 }

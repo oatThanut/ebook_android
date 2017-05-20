@@ -1,14 +1,17 @@
 package com.example.softspec.ebook.repository;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import android.support.v7.widget.SearchView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -17,6 +20,8 @@ import android.widget.ListView;
 import com.example.softspec.ebook.R;
 import com.example.softspec.ebook.model.Book;
 import com.example.softspec.ebook.model.BookRepositoryManager;
+import com.example.softspec.ebook.model.User;
+import com.example.softspec.ebook.payment.Payment;
 
 import java.util.ArrayList;
 
@@ -35,6 +40,7 @@ public class Activity extends AppCompatActivity implements View, Observer {
     private Button searchByNameButton;
     private LinearLayout searchB;
     private Boolean isSearchAppear;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,8 @@ public class Activity extends AppCompatActivity implements View, Observer {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
+        user = new User("Oat", 100);
 
         searchB = (LinearLayout)findViewById(R.id.search_container);
         searchB.setVisibility(LinearLayout.GONE);
@@ -98,6 +106,11 @@ public class Activity extends AppCompatActivity implements View, Observer {
                 updateListView(loader.sortName());
                 return true;
 
+            case R.id.personal_menu:
+                //TODO: call personal menu here
+
+                return true;
+
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
@@ -113,12 +126,21 @@ public class Activity extends AppCompatActivity implements View, Observer {
         bookAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, loader.getPlan().getList());
         listView.setAdapter(bookAdapter);
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, android.view.View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), Payment.class);
+                intent.putExtra("user", user);
+//                Book b = (Book) listView.getItemAtPosition(position);
+//                intent.putExtra("book", b);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        setUpListView();
+
     }
 
 
@@ -139,5 +161,6 @@ public class Activity extends AppCompatActivity implements View, Observer {
         searchByNameButton.setEnabled(false);
         isSearchByName = true;
     }
+
 
 }

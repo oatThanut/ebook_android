@@ -52,7 +52,9 @@ public class BookLoader extends Observable implements Strategy {
     }
 
     public ArrayList<Book> cloneList() {
-        return (ArrayList<Book>) bookArrayList.clone();
+        ArrayList<Book> bs = new ArrayList<>();
+        bs.addAll(bookArrayList);
+        return bs;
     }
 
 
@@ -116,4 +118,5 @@ public class BookLoader extends Observable implements Strategy {
             notifyObservers();
         }
     }
+
 }

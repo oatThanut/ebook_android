@@ -1,12 +1,15 @@
 package com.example.softspec.ebook.model;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by oatThanut on 4/20/2017 AD.
  *  This is the model of Book
  */
 
-public class Book {
+public class Book implements Parcelable {
     private String name;
     private double price;
     private int id;
@@ -19,6 +22,26 @@ public class Book {
         this.img_url = url;
         this.year = year;
     }
+
+    protected Book(Parcel in) {
+        name = in.readString();
+        price = in.readDouble();
+        id = in.readInt();
+        img_url = in.readString();
+        year = in.readString();
+    }
+
+    public static final Creator<Book> CREATOR = new Creator<Book>() {
+        @Override
+        public Book createFromParcel(Parcel in) {
+            return new Book(in);
+        }
+
+        @Override
+        public Book[] newArray(int size) {
+            return new Book[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -57,5 +80,19 @@ public class Book {
     }
     public String toString() {
         return String.format("%s\n%.2f\n%s",name, price, year);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeDouble(price);
+        dest.writeInt(id);
+        dest.writeString(img_url);
+        dest.writeString(year);
     }
 }
