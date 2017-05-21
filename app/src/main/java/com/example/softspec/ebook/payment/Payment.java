@@ -19,6 +19,7 @@ import java.util.List;
 public class Payment extends AppCompatActivity implements PaymentView {
 
     private User user;
+    private Book book;
     private TextView textViewName;
     private TextView textViewPrice;
     private TextView textViewUser;
@@ -28,7 +29,6 @@ public class Payment extends AppCompatActivity implements PaymentView {
     private Button buttonPurchase;
     private Button buttonAddFund;
     private EditText fund;
-    private Book book;
 
 
     @Override
@@ -45,17 +45,12 @@ public class Payment extends AppCompatActivity implements PaymentView {
     public void initial() {
         textViewName = (TextView) findViewById(R.id.textViewName);
         textViewPrice = (TextView) findViewById(R.id.textViewPrice);
-        textViewUser = (TextView) findViewById(R.id.textViewUser);
-        textViewFund = (TextView) findViewById(R.id.textViewFund);
-        listView = (ListView) findViewById(R.id.userBooks);
         buttonPurchase = (Button) findViewById(R.id.buy);
-        buttonAddFund = (Button) findViewById(R.id.addFund);
-        fund = (EditText) findViewById(R.id.fund);
 
-        textViewName.setText(book.getName());
-        textViewPrice.setText("" + book.getPrice());
-        textViewUser.setText(user.getName());
-        textViewFund.setText("" + user.getFund());
+//        textViewName.setText(book.getName());
+//        textViewPrice.setText("" + book.getPrice());
+//        textViewUser.setText(user.getName());
+//        textViewFund.setText("" + user.getFund());
 //        buttonPurchase.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -67,14 +62,6 @@ public class Payment extends AppCompatActivity implements PaymentView {
 //            }
 //        });
 //
-//        buttonAddFund.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                    if (!fund.getText().toString().equals("")) {
-//                        user.setFund(user.getFund() + Double.parseDouble(fund.getText().toString()));
-//                    }
-//            }
-//        });
 //        updateOwnBook();
     }
 

@@ -8,6 +8,6 @@ import java.util.ArrayList;
  * Created by oatThanut on 4/20/2017 AD.
  */
 
-public interface View {
+public interface RepositoryView {
     public void setUpListView();
 }

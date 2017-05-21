@@ -12,18 +12,22 @@ import java.util.ArrayList;
 public class User implements Parcelable {
     private String name;
     private double fund;
+    private ArrayList<Book> cart;
     private ArrayList<Book> ownBooks;
 
     public User(String name, int fund) {
         this.name = name;
         this.fund = fund;
-        this.ownBooks = new ArrayList<>();
+        cart = new ArrayList<>();
+        ownBooks = new ArrayList<>();
     }
 
     protected User(Parcel in) {
-        ownBooks = new ArrayList<>();
         name = in.readString();
         fund = in.readInt();
+        cart = new ArrayList<>();
+        ownBooks = new ArrayList<>();
+        in.readList(cart, Book.class.getClassLoader());
         in.readList(ownBooks, Book.class.getClassLoader());
     }
 
@@ -48,6 +52,7 @@ public class User implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeDouble(fund);
+        dest.writeList(cart);
         dest.writeList(ownBooks);
     }
 
@@ -65,5 +70,31 @@ public class User implements Parcelable {
 
     public void setFund(double fund) {
         this.fund = fund;
+    }
+
+    public ArrayList<Book> getCart() {
+        return cart;
+    }
+
+    public void setCart(ArrayList<Book> cart) {
+        this.cart = cart;
+    }
+
+    public double getTotalPrice() {
+        double totalPrice = 0;
+        for(Book book : cart) {
+            totalPrice += book.getPrice();
+        }
+        return totalPrice;
+    }
+
+    public boolean checkOut() {
+        if( fund < getTotalPrice()) {
+            return false;
+        }
+        fund -= getTotalPrice();
+        ownBooks.addAll(cart);
+        cart.clear();
+        return true;
     }
 }

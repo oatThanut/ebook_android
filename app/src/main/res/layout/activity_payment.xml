@@ -42,63 +42,10 @@
         android:layout_height="wrap_content"
         android:text="------------------------------------"
         android:textSize="32dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User Name"
-        android:textSize="20dp"/>
-
-    <TextView
-        android:id="@+id/textViewUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textSize="32dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Current Fund"
-        android:textSize="20dp"/>
-
-    <TextView
-        android:id="@+id/textViewFund"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="money"
-        android:textSize="32dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/addFund"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Fund"/>
-        <EditText
-            android:id="@+id/fund"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="0"/>
-    </LinearLayout>
+        android:layout_height="wrap_content"></LinearLayout>
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="------------------------------------"
-        android:textSize="32dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User Book List"
-        android:textSize="20dp"/>
-    <ListView
-        android:id="@+id/userBooks"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
 
 </LinearLayout>

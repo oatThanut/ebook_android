@@ -78,6 +78,7 @@ public class Book implements Parcelable {
     public String getYear() {
         return year;
     }
+
     public String toString() {
         return String.format("%s\n%.2f\n%s",name, price, year);
     }

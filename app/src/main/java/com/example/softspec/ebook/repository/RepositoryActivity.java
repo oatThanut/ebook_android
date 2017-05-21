@@ -1,16 +1,16 @@
 package com.example.softspec.ebook.repository;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.content.Intent;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import android.support.v7.widget.SearchView;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -29,7 +29,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 
-public class Activity extends AppCompatActivity implements View, Observer {
+public class RepositoryActivity extends AppCompatActivity implements Observer {
 
     private ArrayAdapter<Book> bookAdapter;
     private BookRepositoryManager loader;
@@ -126,12 +126,10 @@ public class Activity extends AppCompatActivity implements View, Observer {
         listView.setAdapter(bookAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, android.view.View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), Payment.class);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(RepositoryActivity.this, Payment.class);
                 intent.putExtra("user", user);
-//                Book b = (Book) listView.getItemAtPosition(position);
-//                intent.putExtra("book", b);
-                startActivity(intent);
+                startActivityForResult(intent, 0);
             }
         });
     }
