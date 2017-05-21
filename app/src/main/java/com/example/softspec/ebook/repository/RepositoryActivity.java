@@ -1,5 +1,6 @@
 package com.example.softspec.ebook.repository;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -166,5 +167,12 @@ public class RepositoryActivity extends AppCompatActivity implements Observer {
         isSearchByName = true;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            user = data.getExtras().getParcelable("user");
+        }
+    }
 
 }

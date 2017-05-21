@@ -80,6 +80,10 @@ public class User implements Parcelable {
         this.cart = cart;
     }
 
+    public void addToCart(Book book) {
+        cart.add(book);
+    }
+
     public double getTotalPrice() {
         double totalPrice = 0;
         for(Book book : cart) {

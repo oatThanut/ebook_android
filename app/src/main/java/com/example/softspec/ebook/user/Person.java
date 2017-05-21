@@ -1,5 +1,7 @@
 package com.example.softspec.ebook.user;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -82,5 +84,13 @@ public class Person extends AppCompatActivity implements PersonView {
             user.setFund(Double.parseDouble(String.valueOf(addFundEditText.getText())));
         }
         fundTextView.setText("" + user.getFund());
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent returnedIntent = new Intent();
+        returnedIntent.putExtra("user", user);
+        setResult(Activity.RESULT_OK, returnedIntent);
+        super.onBackPressed();
     }
 }

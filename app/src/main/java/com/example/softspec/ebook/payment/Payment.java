@@ -1,5 +1,7 @@
 package com.example.softspec.ebook.payment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,13 +24,7 @@ public class Payment extends AppCompatActivity implements PaymentView {
     private Book book;
     private TextView textViewName;
     private TextView textViewPrice;
-    private TextView textViewUser;
-    private TextView textViewFund;
-    private ListView listView;
-    private ArrayAdapter<Book> bookAdapter;
-    private Button buttonPurchase;
-    private Button buttonAddFund;
-    private EditText fund;
+    private Button addToCardButton;
 
 
     @Override
@@ -45,28 +41,30 @@ public class Payment extends AppCompatActivity implements PaymentView {
     public void initial() {
         textViewName = (TextView) findViewById(R.id.textViewName);
         textViewPrice = (TextView) findViewById(R.id.textViewPrice);
-        buttonPurchase = (Button) findViewById(R.id.buy);
+        addToCardButton = (Button) findViewById(R.id.addToCart);
 
         textViewName.setText(book.getName());
         textViewPrice.setText("" + book.getPrice());
-//        buttonPurchase.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (user.getFund() > book.getPrice()) {
-//                    user.setFund(user.getFund() - book.getPrice());
-//                    user.getOwnBooks().add(book);
-//                    updateOwnBook();
-//                }
-//            }
-//        });
-//
-//        updateOwnBook();
+        addToCardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addToCart();
+            }
+        });
     }
 
-    public void updateOwnBook() {
-            bookAdapter = new ArrayAdapter<>(this,
-                    android.R.layout.simple_list_item_1, user.getOwnBooks());
-            listView.setAdapter(bookAdapter);
+    @Override
+    public void addToCart() {
+        user.addToCart(book);
+        onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent returnedIntent = new Intent();
+        returnedIntent.putExtra("user", user);
+        setResult(Activity.RESULT_OK, returnedIntent);
+        super.onBackPressed();
     }
 
 }
