@@ -24,7 +24,7 @@ public class User implements Parcelable {
 
     protected User(Parcel in) {
         name = in.readString();
-        fund = in.readInt();
+        fund = in.readDouble();
         cart = new ArrayList<>();
         ownBooks = new ArrayList<>();
         in.readList(cart, Book.class.getClassLoader());

@@ -1,16 +1,16 @@
 package com.example.softspec.ebook.repository;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.SearchView;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
-import android.support.v7.widget.SearchView;
 import android.view.View;
+
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,7 +24,6 @@ import com.example.softspec.ebook.model.User;
 import com.example.softspec.ebook.payment.Payment;
 
 import java.util.ArrayList;
-
 import java.util.Observable;
 import java.util.Observer;
 
@@ -129,6 +128,7 @@ public class RepositoryActivity extends AppCompatActivity implements Observer {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(RepositoryActivity.this, Payment.class);
                 intent.putExtra("user", user);
+                intent.putExtra("book", (Book) listView.getItemAtPosition(position));
                 startActivityForResult(intent, 0);
             }
         });

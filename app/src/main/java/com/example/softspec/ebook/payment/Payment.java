@@ -37,7 +37,7 @@ public class Payment extends AppCompatActivity implements PaymentView {
         setContentView(R.layout.activity_payment);
 
         user = getIntent().getParcelableExtra("user");
-//        book = getIntent().getParcelableExtra("book");
+        book = getIntent().getParcelableExtra("book");
         initial();
     }
 
@@ -47,10 +47,8 @@ public class Payment extends AppCompatActivity implements PaymentView {
         textViewPrice = (TextView) findViewById(R.id.textViewPrice);
         buttonPurchase = (Button) findViewById(R.id.buy);
 
-//        textViewName.setText(book.getName());
-//        textViewPrice.setText("" + book.getPrice());
-//        textViewUser.setText(user.getName());
-//        textViewFund.setText("" + user.getFund());
+        textViewName.setText(book.getName());
+        textViewPrice.setText("" + book.getPrice());
 //        buttonPurchase.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
