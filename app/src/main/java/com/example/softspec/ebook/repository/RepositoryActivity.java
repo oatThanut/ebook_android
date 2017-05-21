@@ -22,6 +22,7 @@ import com.example.softspec.ebook.model.Book;
 import com.example.softspec.ebook.model.BookRepositoryManager;
 import com.example.softspec.ebook.model.User;
 import com.example.softspec.ebook.payment.Payment;
+import com.example.softspec.ebook.user.Person;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -107,7 +108,9 @@ public class RepositoryActivity extends AppCompatActivity implements Observer {
 
             case R.id.personal_menu:
                 //TODO: call personal menu here
-
+                Intent intent = new Intent(RepositoryActivity.this, Person.class);
+                intent.putExtra("user", user);
+                startActivityForResult(intent, 0);
                 return true;
 
             case R.id.cart_menu:
