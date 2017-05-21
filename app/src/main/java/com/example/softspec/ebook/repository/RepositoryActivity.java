@@ -110,6 +110,11 @@ public class RepositoryActivity extends AppCompatActivity implements Observer {
 
                 return true;
 
+            case R.id.cart_menu:
+                //TODO: call cart menu here
+
+                return true;
+
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
