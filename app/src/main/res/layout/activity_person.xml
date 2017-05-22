@@ -69,8 +69,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="numberDecimal"
-            android:text="Enter fund here" />
+            android:hint="Enter fund here"
+            android:inputType="numberDecimal" />
 
         <Button
             android:id="@+id/addFundButton"
