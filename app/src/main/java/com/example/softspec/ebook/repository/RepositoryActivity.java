@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.softspec.ebook.R;
+import com.example.softspec.ebook.cart.Cart;
 import com.example.softspec.ebook.model.Book;
 import com.example.softspec.ebook.model.BookRepositoryManager;
 import com.example.softspec.ebook.model.User;
@@ -109,14 +110,16 @@ public class RepositoryActivity extends AppCompatActivity implements Observer {
 
             case R.id.personal_menu:
                 //TODO: call personal menu here
-                Intent intent = new Intent(RepositoryActivity.this, Person.class);
-                intent.putExtra("user", user);
-                startActivityForResult(intent, 0);
+                Intent personIntent = new Intent(RepositoryActivity.this, Person.class);
+                personIntent.putExtra("user", user);
+                startActivityForResult(personIntent, 0);
                 return true;
 
             case R.id.cart_menu:
                 //TODO: call cart menu here
-
+                Intent cartIntent = new Intent(RepositoryActivity.this, Cart.class);
+                cartIntent.putExtra("user", user);
+                startActivityForResult(cartIntent, 0);
                 return true;
 
             default:

@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".payment.Payment" />
         <activity android:name=".user.Person" />
+        <activity android:name=".cart.Cart" />
     </application>
 
 </manifest>

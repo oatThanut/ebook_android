@@ -64,12 +64,12 @@ public class User implements Parcelable {
         return fund;
     }
 
-    public ArrayList<Book> getOwnBooks() {
-        return ownBooks;
-    }
-
     public void setFund(double fund) {
         this.fund = fund;
+    }
+
+    public ArrayList<Book> getOwnBooks() {
+        return ownBooks;
     }
 
     public ArrayList<Book> getCart() {
