@@ -25,7 +25,7 @@ public class Payment extends AppCompatActivity implements PaymentView {
     private TextView textViewName;
     private TextView textViewPrice;
     private Button addToCardButton;
-
+    private PaymentPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,8 @@ public class Payment extends AppCompatActivity implements PaymentView {
 
         user = getIntent().getParcelableExtra("user");
         book = getIntent().getParcelableExtra("book");
-        initial();
+        presenter = new PaymentPresenter(this, user, book);
+        presenter.start();
     }
 
     @Override
@@ -48,15 +49,9 @@ public class Payment extends AppCompatActivity implements PaymentView {
         addToCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addToCart();
+                presenter.addToCart();
             }
         });
-    }
-
-    @Override
-    public void addToCart() {
-        user.addToCart(book);
-        onBackPressed();
     }
 
     @Override

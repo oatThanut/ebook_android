@@ -19,10 +19,6 @@ import com.example.softspec.ebook.model.User;
 
 import java.util.ArrayList;
 
-/**
- * Created by oatThanut on 5/21/2017 AD.
- */
-
 public class Person extends AppCompatActivity implements PersonView {
     private User user;
     private Button addButton;
@@ -80,10 +76,12 @@ public class Person extends AppCompatActivity implements PersonView {
 
     @Override
     public void addFund() {
+        Double fund = user.getFund();
         if(Double.parseDouble(String.valueOf(addFundEditText.getText())) >= 0) {
-            user.setFund(Double.parseDouble(String.valueOf(addFundEditText.getText())));
+            fund += Double.parseDouble(String.valueOf(addFundEditText.getText()));
+            user.setFund(fund);
         }
-        fundTextView.setText("" + user.getFund());
+        fundTextView.setText("" + fund);
     }
 
     @Override

@@ -18,22 +18,20 @@ import com.example.softspec.ebook.model.User;
 
 import java.util.ArrayList;
 
-/**
- * Created by oatThanut on 5/22/2017 AD.
- */
-
 public class Cart extends AppCompatActivity implements CartView {
     private User user;
     private TextView textViewPrice;
     private ListView listView;
     private Adapter bookAdapter;
+    private CartPresenter presenter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
         user = getIntent().getParcelableExtra("user");
-        initial();
+        presenter = new CartPresenter(this, user);
+        presenter.start();
     }
 
     @Override
@@ -44,7 +42,7 @@ public class Cart extends AppCompatActivity implements CartView {
 
             @Override
             public void onClick(View v) {
-                checkOut();
+                presenter.checkOut();
                 onBackPressed();
             }
         });
@@ -52,20 +50,12 @@ public class Cart extends AppCompatActivity implements CartView {
         updateList();
     }
 
-    private void updateList() {
+    public void updateList() {
         textViewPrice.setText("" + user.getTotalPrice());
         listView = (ListView) findViewById(R.id.cartListView);
         bookAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, (ArrayList<Book>)user.getCart());
         listView.setAdapter((ListAdapter) bookAdapter);
-    }
-
-
-    @Override
-    public void checkOut() {
-        user.checkOut();
-        updateList();
-
     }
 
     @Override

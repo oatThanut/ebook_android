@@ -37,14 +37,14 @@
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:text="By Name"
-                android:onClick="ChooseName"/>
+                android:onClick="chooseName"/>
             <Button
                 android:id="@+id/year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="3"
                 android:text="By Year"
-                android:onClick="ChooseYear"/>
+                android:onClick="chooseYear"/>
         </GridLayout>
     </LinearLayout>
 

@@ -31,7 +31,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 
-public class RepositoryActivity extends AppCompatActivity implements Observer {
+public class RepositoryActivity extends AppCompatActivity implements Observer, RepositoryView {
 
     private ArrayAdapter<Book> bookAdapter;
     private BookRepositoryManager loader;
@@ -42,6 +42,7 @@ public class RepositoryActivity extends AppCompatActivity implements Observer {
     private Button searchByNameButton;
     private LinearLayout searchB;
     private Boolean isSearchAppear;
+    private RepositoryPresenter presenter;
     private User user;
 
     @Override
@@ -59,8 +60,8 @@ public class RepositoryActivity extends AppCompatActivity implements Observer {
 
         searchB = (LinearLayout)findViewById(R.id.search_container);
         isSearchAppear = false;
-
         isSearchByName = true;
+        presenter = new RepositoryPresenter(this);
         text = (SearchView) findViewById(R.id.search);
         text.setMaxWidth(Integer.MAX_VALUE);
         searchByYearButton = (Button) findViewById(R.id.year);
@@ -148,7 +149,7 @@ public class RepositoryActivity extends AppCompatActivity implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        setUpListView();
+        presenter.start();
     }
 
 
@@ -158,13 +159,13 @@ public class RepositoryActivity extends AppCompatActivity implements Observer {
         listView.setAdapter(bookAdapter);
     }
 
-    public void ChooseYear(android.view.View view) {
+    public void chooseYear(android.view.View view) {
         searchByYearButton.setEnabled(false);
         searchByNameButton.setEnabled(true);
         isSearchByName = false;
     }
 
-    public void ChooseName(android.view.View view) {
+    public void chooseName(android.view.View view) {
         searchByYearButton.setEnabled(true);
         searchByNameButton.setEnabled(false);
         isSearchByName = true;

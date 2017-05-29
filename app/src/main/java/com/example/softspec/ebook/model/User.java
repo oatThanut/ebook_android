@@ -5,10 +5,6 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
-/**
- * Created by oatThanut on 5/19/2017 AD.
- */
-
 public class User implements Parcelable {
     private String name;
     private double fund;
